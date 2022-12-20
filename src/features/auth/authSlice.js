@@ -5,7 +5,7 @@ import axios from "axios";
 const initialState = {
     data: [],
     userToken: null,
-    loading: true,
+    loading: false,
     isSuccess: false,
     error: "",
 }

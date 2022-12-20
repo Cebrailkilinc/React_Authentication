@@ -16,7 +16,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { error, userToken, isSuccess,loading } = useSelector(state => state.user)
+  const { error, userToken, isSuccess, loading } = useSelector(state => state.user)
   console.log(userToken, isSuccess)
 
 
@@ -44,14 +44,14 @@ const Login = () => {
         password: values.password
       }
       await dispatch(fetchUserToken(userData))
-      // if (localStorage.getItem("userToken")) {
-      //   navigate("/home")
-      // }
+      if (localStorage.getItem("userToken")) {
+        navigate("/home")
+      }
     }
   })
-  
+
   if (loading) {
-    return <Spinner/>
+    return <Spinner />
   }
 
   return (
@@ -75,7 +75,7 @@ const Login = () => {
               {error && <h1 className='text-red-600 text-xs italic'>Email veya Password yanlış...</h1>}
             </div>
           </div>
-         
+
           <div className="flex items-center justify-between mt-5">
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
               Sign In
